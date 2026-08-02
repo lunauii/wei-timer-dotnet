@@ -4,9 +4,10 @@
 
 A WPF-based independent training timer detector and daily carat tracker for Umamusume, for Windows.
 
-This is the Windows-native .NET port of [wei-timer](https://github.com/lunauii/wei-timer), the original Linux (GTK4/libadwaita) app. It's a from-scratch rewrite, not a shared codebase — everything the Linux app needs Wayland/X11/D-Bus-portal plumbing for has a single deterministic Windows equivalent instead.
+This is the Windows-native .NET port of [wei-timer](https://github.com/lunauii/wei-timer), the original Linux (GTK4/libadwaita) app.
 
-> **Status**: A complete port of wei-timer's feature set, verified end-to-end on a real Windows machine — timer calibration, autorun detection, carat OCR, sound, notifications, tray, single-instance activation, config persistence, and the installer have all been tested working. Still early (v0.1.0); see [Known limitations](#known-limitations) for what's untested.
+> [!NOTE]
+> A complete port of wei-timer's feature set, verified end-to-end on a real Windows machine — timer calibration, autorun detection, carat OCR, sound, notifications, tray, single-instance activation, config persistence, and the installer have all been tested working. Still early (v0.1.0); see [Known limitations](#known-limitations) for what's untested.
 
 ## What it does
 
