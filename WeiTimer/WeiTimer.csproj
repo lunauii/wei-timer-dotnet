@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <RootNamespace>WeiTimer</RootNamespace>
+    <AssemblyName>WeiTimer</AssemblyName>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Assets\wei-timer.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <!-- Allows compiling this Windows-only project on non-Windows dev machines
+         (this repo is developed cross-platform; the app only runs on Windows). -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- WFAC010 suggests the WinForms-only ApplicationHighDpiMode property instead
+         of app.manifest, but WPF's own DPI awareness is only ever read from the
+         manifest, so the manifest has to stay authoritative here. -->
+    <NoWarn>$(NoWarn);WFAC010</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WPF-UI" Version="3.0.5" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Update, not Include: the SDK's default glob already picks up every
+         non-code file under the project (including these) as a bare None
+         item. Re-Include-ing the same paths creates duplicate None items,
+         one bare and one with this metadata, which `dotnet build` tolerates
+         but `dotnet publish`'s file-conflict resolution doesn't: it silently
+         dropped some (but not all) of these files from the publish output
+         depending on which duplicate "won". Update just attaches the metadata
+         to the single item that's already there. -->
+    <!-- ExcludeFromSingleFile: PublishSingleFile bundles PreserveNewest content
+         into the exe itself by default unless told otherwise, non-deterministically
+         picking which files to bundle vs leave loose in testing here. These are
+         loaded at runtime via a plain file path next to the exe (TrayIconService,
+         SoundService), so they must never end up bundled inside it. -->
+    <None Update="Assets\Sounds\*.mp3" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <None Update="Assets\wei-timer.ico" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <Resource Include="Assets\wei-timer.png" />
+  </ItemGroup>
+
+</Project>
