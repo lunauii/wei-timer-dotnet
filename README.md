@@ -18,11 +18,14 @@ This is the Windows-native .NET port of [wei-timer](https://github.com/lunauii/w
 
 ## Installation
 
-**Installer (recommended)**: download `WeiTimerSetup-x.y.z.exe` from the [latest release](https://github.com/lunauii/wei-timer-dotnet/releases/latest) and run it. It's a per-user install (no admin/UAC prompt), with an optional "launch at Windows startup" checkbox.
+**Installer (recommended)**
+
+Download `WeiTimerSetup-x.y.z.exe` from the [latest release](https://github.com/lunauii/wei-timer-dotnet/releases/latest) and run it. It's a per-user install (no admin/UAC prompt), with an optional "launch at Windows startup" checkbox.
 
 The installer and exe aren't code-signed, so Windows SmartScreen will likely flag them as "unrecognized" on first run — click **More info → Run anyway**. This is purely a reputation-tracking artifact of being unsigned freeware, not a sign anything's wrong; there's no signing certificate for this project.
 
-**Build from source**:
+**Build from source**
+
 ```
 git clone https://github.com/lunauii/wei-timer-dotnet.git
 cd wei-timer-dotnet
